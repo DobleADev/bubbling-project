@@ -2,8 +2,6 @@
 "companyName": "DobleADev",
 "productName": "Bubblin Around",
 "dataUrl": "Build.data.unityweb",
-"wasmCodeUrl": "Build.wasm.code.unityweb",
-"wasmFrameworkUrl": "Build.wasm.framework.unityweb",
 "asmCodeUrl": "Build.asm.code.unityweb",
 "asmMemoryUrl": "Build.asm.memory.unityweb",
 "asmFrameworkUrl": "Build.asm.framework.unityweb",
