@@ -1,0 +1,15 @@
+{
+    "name": "DobleADev.Scriptables.Variables",
+    "references": [
+        "GUID:0a13cb673a579eb429f7e7b696054c93"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
