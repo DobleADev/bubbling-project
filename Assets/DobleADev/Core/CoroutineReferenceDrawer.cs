@@ -3,7 +3,9 @@ using System.Collections;
 using System.Reflection;
 using System;
 
+#if UNITY_EDITOR
 using UnityEditor;
+#endif  
 
 [System.Serializable]
 public struct CoroutineReference
@@ -14,6 +16,7 @@ public struct CoroutineReference
     public string[] parameterNames;
 }
 
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(CoroutineReference))]
 public class CoroutineReferenceDrawer : PropertyDrawer
 {
@@ -73,3 +76,4 @@ public class CoroutineReferenceDrawer : PropertyDrawer
         
     }
 }
+#endif
