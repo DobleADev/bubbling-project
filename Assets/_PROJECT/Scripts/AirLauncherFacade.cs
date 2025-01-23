@@ -10,7 +10,7 @@ public class AirLauncherFacade : MonoBehaviour
     [SerializeField] string _playerTag = "Player";
     [SerializeField] UnityEvent _onPlayerEnter;
     [SerializeField] UnityEvent _onPlayerLaunch;
-    Rigidbody2D _playerInside;
+    Rigidbody _playerInside;
     bool _canLaunch = false;
 
     IEnumerator WaitBeforeLaunch()
@@ -35,14 +35,14 @@ public class AirLauncherFacade : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnTriggerEnter(Collider other) 
     {
         if (!other.CompareTag(_playerTag) || _playerInside != null || !enabled)
         {
             return;
         }
 
-        if (other.TryGetComponent(out Rigidbody2D player))
+        if (other.TryGetComponent(out Rigidbody player))
         {
             _playerInside = player;
             _playerInside.position = transform.position;
@@ -56,8 +56,11 @@ public class AirLauncherFacade : MonoBehaviour
     public void Launch()
     {
         // _playerInside.gameObject.SetActive(true);
-        _playerInside.AddForce(_impulseAmount * transform.right, ForceMode2D.Impulse);
-        _playerInside = null;
+        if (_playerInside != null) 
+        {
+            _playerInside.AddForce(_impulseAmount * transform.right, ForceMode.Impulse);
+            _playerInside = null;
+        }
         _canLaunch = false;
         _onPlayerLaunch?.Invoke();
     }

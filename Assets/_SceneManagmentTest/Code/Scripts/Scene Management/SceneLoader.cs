@@ -27,13 +27,23 @@ public class SceneLoader : MonoBehaviour
     Queue<SceneLoadSetting> sceneQueue = new Queue<SceneLoadSetting>();
     bool _isLoading;
 
+    public void EnqueueSceneLoad(SceneReference scene)
+    {
+        sceneQueue.Enqueue(new SceneLoadSetting(scene, SceneLoadSetting.ProcessType.Load));
+    }
+
     public void EnqueueSceneLoad(SceneContainer sceneToLoad)
     {
         if (sceneToLoad == null) return;
         for (int i = 0; i < sceneToLoad.content.Length; i++)
         {
-            sceneQueue.Enqueue(new SceneLoadSetting(sceneToLoad.content[i], SceneLoadSetting.ProcessType.Load));
+            EnqueueSceneLoad(sceneToLoad.content[i]);
         }
+    }
+
+    public void EnqueueSceneUnload(SceneReference scene)
+    {
+        sceneQueue.Enqueue(new SceneLoadSetting(scene, SceneLoadSetting.ProcessType.UnLoad));
     }
 
     public void EnqueueSceneUnload(SceneContainer sceneToUnload)
@@ -41,7 +51,7 @@ public class SceneLoader : MonoBehaviour
         if (sceneToUnload == null) return;
         for (int i = 0; i < sceneToUnload.content.Length; i++)
         {
-            sceneQueue.Enqueue(new SceneLoadSetting(sceneToUnload.content[i], SceneLoadSetting.ProcessType.UnLoad));
+            EnqueueSceneUnload(sceneToUnload.content[i]);
         }
     }
 

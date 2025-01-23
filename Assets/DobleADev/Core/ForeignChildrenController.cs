@@ -12,14 +12,18 @@ namespace DobleADev.Core
             return _children.Contains(children);
         }
         
-        public void InstatiateChildren(GameObject prefab)
+        public Transform InstatiateChildren(GameObject prefab)
         {
-            _children.Add(Instantiate(prefab).transform);
+            var newChildren = Instantiate(prefab).transform;
+            _children.Add(newChildren);
+            return newChildren;
         }
 
-        public void InstatiateChildrenInside(GameObject prefab)
+        public Transform InstatiateChildrenInside(GameObject prefab)
         {
-            _children.Add(Instantiate(prefab, transform).transform);
+            var newChildren = Instantiate(prefab, transform).transform;
+            _children.Add(newChildren);
+            return newChildren;
         }
 
         public void AddChildren(Transform children)
@@ -31,7 +35,7 @@ namespace DobleADev.Core
         {
             if (!Contains(children)) return;
             _children.Remove(children);
-            Destroy(children);
+            Destroy(children.gameObject);
         }
 
         public void DestroyAllChildren()
@@ -39,7 +43,7 @@ namespace DobleADev.Core
             foreach (var children in _children)
             {
                 if (children == null) continue;
-                Destroy(children);
+                Destroy(children.gameObject);
             }
             _children.Clear();
             

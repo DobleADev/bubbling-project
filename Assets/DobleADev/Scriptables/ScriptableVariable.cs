@@ -35,6 +35,17 @@ namespace DobleADev.Scriptables
             SetValue(value);
         }
 
+        public void SetValueFromOther(ScriptableVariableBase generic)
+        {
+            SetValue(generic.GetValue());
+            // Debug.Log("Trying to set " + generic.GetValue() + " from " + generic.name + " to " + name);
+        }
+
+        // public void SetValueFromOther(ScriptableVariable<T> similar)
+        // {
+        //     SetValue(similar._value);
+        // }
+
         public override Type GetVariableType() => typeof(T);
 
         public static implicit operator T(ScriptableVariable<T> variable) => (T)variable.GetValue();

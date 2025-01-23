@@ -23,6 +23,15 @@ public class RoomTransitioner : MonoBehaviour
         }
     }
 
+    public void StartWith(Transform other)
+    {
+        if (!RoomTransitionManager.instance.isPlaying && other.TryGetComponent(out Rigidbody rigidbody)
+        && startPosition != null && endPosition != null)
+        {
+            StartCoroutine(TransitionCoroutine(rigidbody, startPosition, endPosition));
+        }
+    }
+
     IEnumerator TransitionCoroutine(Rigidbody target, Transform start, Transform end)
     {
         RoomTransitionManager.instance.isPlaying = true;
@@ -40,14 +49,20 @@ public class RoomTransitioner : MonoBehaviour
             Vector3 endPosition = end.position;
             while (t < 1)
             {
+                if (target == null) break;
+                target.Sleep();
                 targetTransform.position = Vector3.Lerp(startPosition, endPosition, t);
                 t += deltaDuration * Mathf.Min(Time.unscaledDeltaTime, Time.maximumDeltaTime) 
                 * (deltaTimeMultiplier ? deltaTimeMultiplier.Multiplier : 1);
                 yield return null;
             }
         }
-        targetTransform.position = end.position;
-        target.interpolation = initialInterpolation;
+        if (target != null) 
+        {
+            target.Sleep();
+            targetTransform.position = end.position;
+            target.interpolation = initialInterpolation;
+        }
         RoomTransitionManager.instance.isPlaying = false;
         onEndTransition?.Invoke();
         RoomTransitionManager.instance.EndTransition();
