@@ -15,7 +15,15 @@ public class AirLauncherFacade : MonoBehaviour
 
     IEnumerator WaitBeforeLaunch()
     {
-        yield return new WaitForSeconds(_initialDelay);
+        float t = 0;
+        while (t < _initialDelay)
+        {
+            if (_playerInside == null) break;
+            _playerInside.Sleep();
+            t += Time.deltaTime;
+            yield return null;
+        }
+        // yield return new WaitForSeconds(_initialDelay);
         _canLaunch = true;
     }
 
@@ -45,7 +53,7 @@ public class AirLauncherFacade : MonoBehaviour
         if (other.TryGetComponent(out Rigidbody player))
         {
             _playerInside = player;
-            _playerInside.position = transform.position;
+            _playerInside.transform.position = transform.position;
             _playerInside.velocity = Vector3.zero;
             // _playerInside.gameObject.SetActive(false);
             StartCoroutine(WaitBeforeLaunch());

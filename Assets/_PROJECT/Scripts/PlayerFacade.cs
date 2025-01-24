@@ -10,9 +10,9 @@ public class PlayerFacade : MonoBehaviour
 	[SerializeField] Rigidbody _body;
 	[SerializeField] Slider _oxygenSlider;
 	[SerializeField] Transform _face;
-	[SerializeField] FloatScriptableVariable _oxygenDrainMultiplier;
 	[SerializeField] string _draggableTag = "Dragger";
 	[SerializeField] string _oxygenTag = "Oxygen";
+	
 	[Header("Properties")]
 	[SerializeField] float _speed = 4;
 	[SerializeField] float _baseGravity = -0.05f;
@@ -24,6 +24,10 @@ public class PlayerFacade : MonoBehaviour
 	[SerializeField] bool _startWithGravity = true;
 	[SerializeField] bool _startWithDrain = true;
 	[SerializeField, Range(0, 1)] float _faceFrontLook = 0.25f;
+
+	[Header("Multipliers")]
+	[SerializeField] FloatScriptableVariable _oxygenDrainMultiplier;
+
 	[Header("Events")]
 	[SerializeField] DropdownUnityEvent _onEmptyOxygen;
 	private Vector2 moveInput;
