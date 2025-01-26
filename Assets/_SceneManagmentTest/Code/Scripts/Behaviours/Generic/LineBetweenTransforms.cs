@@ -2,6 +2,7 @@
 
 public class LineBetweenTransforms : MonoBehaviour
 {
+    [SerializeField] float width;
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] Transform start;
     [SerializeField] Transform end;
@@ -15,5 +16,8 @@ public class LineBetweenTransforms : MonoBehaviour
         if (start == null || end == null) return;
         Vector3[] positions = { start.position, end.position };
         lineRenderer.SetPositions(positions);
+        lineRenderer.startWidth = width;
+        lineRenderer.endWidth = width;
+
     }
 }

@@ -93,7 +93,7 @@ public class PlayerFacade : MonoBehaviour
 
 		if (other.CompareTag(_oxygenTag))
 		{
-			_oxygenSlider.value += Time.deltaTime * _defaultOxygenDrainPerSecond;
+			_oxygenSlider.value += Time.deltaTime * _defaultOxygenGain;
 		}
 	}
 
