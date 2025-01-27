@@ -7,6 +7,7 @@ public class AirLauncherFacade : MonoBehaviour
     [SerializeField] float _impulseAmount = 1;
     [SerializeField] float _initialDelay = 0.6f;
     [SerializeField] bool _waitForInput = false;
+    [SerializeField] Vector3 _attachOffset;
     [SerializeField] string _playerTag = "Player";
     [SerializeField] UnityEvent _onPlayerEnter;
     [SerializeField] UnityEvent _onPlayerLaunch;
@@ -53,7 +54,7 @@ public class AirLauncherFacade : MonoBehaviour
         if (other.TryGetComponent(out Rigidbody player))
         {
             _playerInside = player;
-            _playerInside.transform.position = transform.position;
+            _playerInside.transform.position = transform.TransformPoint(_attachOffset);
             _playerInside.velocity = Vector3.zero;
             // _playerInside.gameObject.SetActive(false);
             StartCoroutine(WaitBeforeLaunch());
