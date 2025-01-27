@@ -1,7 +1,7 @@
 {
 "companyName": "DobleADev",
 "productName": "The Last Bubble ALPHA 4",
-"productVersion": "0.4",
+"productVersion": "0.5",
 "dataUrl": "Build.data.unityweb",
 "wasmCodeUrl": "Build.wasm",
 "wasmFrameworkUrl": "Build.wasm.framework.unityweb",
@@ -9,7 +9,7 @@
 "webglContextAttributes": {"preserveDrawingBuffer": false},
 "splashScreenStyle": "Dark",
 "backgroundColor": "#231F20",
-"developmentBuild": true,
+"developmentBuild": false,
 "multithreading": false,
 "unityVersion": "2019.4.40f1"
 }
