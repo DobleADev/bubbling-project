@@ -11,13 +11,22 @@ public class LineBetweenTransforms : MonoBehaviour
     public void SetEndTransform(Transform end) { this.end = end; }
     public void SetEndTransform(GameObject end) { this.end = end.transform; }
 
+    private void OnEnable() 
+    {
+        UpdatePoints();
+    }
+
     void Update()
+    {
+        UpdatePoints();
+    }
+
+    void UpdatePoints()
     {
         if (start == null || end == null) return;
         Vector3[] positions = { start.position, end.position };
         lineRenderer.SetPositions(positions);
         lineRenderer.startWidth = width;
         lineRenderer.endWidth = width;
-
     }
 }
