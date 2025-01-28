@@ -4,7 +4,7 @@ using DobleADev.Scriptables.Variables;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerFacade : MonoBehaviour 
+public class PlayerFacade : MonoBehaviour
 {
 	[Header("Dependencies")]
 	[SerializeField] Rigidbody _body;
@@ -12,7 +12,7 @@ public class PlayerFacade : MonoBehaviour
 	[SerializeField] Transform _face;
 	[SerializeField] string _draggableTag = "Dragger";
 	[SerializeField] string _oxygenTag = "Oxygen";
-	
+
 	[Header("Properties")]
 	[SerializeField] float _speed = 4;
 	[SerializeField] float _baseGravity = -0.05f;
@@ -49,15 +49,20 @@ public class PlayerFacade : MonoBehaviour
 		}
 	}
 
-	void Update () 
+	public void Move(Vector2 move)
 	{
 		if (_inputEnabled)
 		{
-			moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+			moveInput += move;
 			moveInput = Vector2.ClampMagnitude(moveInput, 1);
 		}
+	}
 
-		if (_drainEnabled == true && _oxygenSlider.value > 0) 
+	void Update()
+	{
+		Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+
+		if (_drainEnabled == true && _oxygenSlider.value > 0)
 		{
 			_oxygenSlider.value -= Time.deltaTime * _oxygenDrainMultiplier.GetValueTyped() * _defaultOxygenDrainPerSecond;
 			if (_oxygenSlider.value <= 0)
@@ -72,8 +77,13 @@ public class PlayerFacade : MonoBehaviour
 			_face.rotation = Quaternion.RotateTowards(_face.rotation, Quaternion.LookRotation(-faceDirection), Time.deltaTime * 200);
 		}
 	}
-	
-	void FixedUpdate () 
+
+	// private void LateUpdate()
+	// {
+		
+	// }
+
+	void FixedUpdate()
 	{
 		if (_isBeingDragged)
 		{
@@ -83,9 +93,11 @@ public class PlayerFacade : MonoBehaviour
 		_body.AddForce(Time.deltaTime * _speed * moveInput);
 		if (_gravityEnabled) _body.AddForce(Time.deltaTime * _baseGravity * Vector2.down);
 		_isBeingDragged = false;
+		moveInput = Vector2.zero;
 	}
 
-	private void OnTriggerStay(Collider other) {
+	private void OnTriggerStay(Collider other)
+	{
 		if (other.CompareTag(_draggableTag))
 		{
 			_isBeingDragged = true;

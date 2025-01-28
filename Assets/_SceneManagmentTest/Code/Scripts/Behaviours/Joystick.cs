@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
 	[SerializeField] float _radius = 10;
-	[SerializeField] Image _knob;
+	[SerializeField] Transform _knob;
 	[SerializeField, Range(0, 1)] float _deadZone;
 	[SerializeField] Vector2Event _onValueChange;
 	Vector2 _lastPosition;
@@ -33,11 +33,26 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         EvaluateInput(knobData.position);
     }
 
+	public void OnPointerDown(BaseEventData eventData)
+	{
+		OnPointerDown((PointerEventData) eventData);
+	}
+
+	public void MoveToPointer(BaseEventData eventData)
+	{
+		transform.position = ((PointerEventData) eventData).position;
+	}
+
     public void OnPointerUp(PointerEventData eventData)
     {
         knobData = null;
 		EvaluateInput(transform.position);
     }
+
+	public void OnPointerUp(BaseEventData eventData)
+	{
+		OnPointerUp((PointerEventData) eventData);
+	}
 
 	void EvaluateInput(Vector2 input)
 	{
