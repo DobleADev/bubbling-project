@@ -1,0 +1,16 @@
+{
+    "name": "PokiWrapper",
+    "rootNamespace": "",
+    "references": [
+        "GUID:072ea27b3a06b3e469af9fcb1bd4fdb6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
