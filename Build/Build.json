@@ -1,7 +1,7 @@
 {
 "companyName": "DobleADev",
 "productName": "The Last Bubble 0.6.5",
-"productVersion": "0.6",
+"productVersion": "0.6.5",
 "dataUrl": "Build.data.unityweb",
 "wasmCodeUrl": "Build.wasm",
 "wasmFrameworkUrl": "Build.wasm.framework.unityweb",
