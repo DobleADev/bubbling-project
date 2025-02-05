@@ -84,17 +84,17 @@ public class PokiUnitySDK : MonoBehaviour {
 	public PokiUnitySDK () {}
 
 	private bool _initializing = false;
-	private bool _ready = false;
+	public bool _ready = false;
 
 	public bool adblocked = false;
 	public bool isShowingAd { get; set;}
 
 	public delegate void SDKInitializedDelegate();
- 	public SDKInitializedDelegate sdkInitializedCallback;
+ 	public SDKInitializedDelegate sdkInitializedCallback = () => {};
 	public delegate void CommercialBreakDelegate();
- 	public CommercialBreakDelegate commercialBreakCallBack;
+ 	public CommercialBreakDelegate commercialBreakCallBack = () => {};
 	public delegate void RewardedBreakDelegate(bool withReward);
- 	public RewardedBreakDelegate rewardedBreakCallBack;
+ 	public RewardedBreakDelegate rewardedBreakCallBack = (withReward) => {};
 	public delegate void shareableURLResolvedDelegate(string url);
  	public shareableURLResolvedDelegate shareableURLResolvedCallback;
 	public delegate void shareableURLRejectedDelegate();
@@ -226,6 +226,8 @@ public class PokiUnitySDK : MonoBehaviour {
 		#if UNITY_EDITOR
 		Debug.Log("PokiUnitySDK: displayAd with identifier:"+identifier+", size:"+size+" top:"+top+" left:"+left);
 		#else
+
+
 		string[] availableSizes = {"970x250", "300x250", "728x90", "160x600", "320x50"};
 		bool allowSize = Array.Exists(availableSizes, element => element == size);
 
