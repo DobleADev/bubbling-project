@@ -10,4 +10,10 @@ public class PlayAnimation : MonoBehaviour
     {
         _animation.Play(_playMode);
     }
+
+    public void Play(AnimationClip animationClip)
+    {
+        _animation.Play(animationClip.name, _playMode);
+    }
+    
 }

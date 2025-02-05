@@ -90,8 +90,8 @@ public class PlayerFacade : MonoBehaviour
 			_body.drag = _defaultPhysicsDrag + _seaweedDragPressure;
 		}
 		else _body.drag = _defaultPhysicsDrag;
-		_body.AddForce(Time.deltaTime * _speed * moveInput);
-		if (_gravityEnabled) _body.AddForce(Time.deltaTime * _baseGravity * Vector2.down);
+		_body.AddForce(Time.fixedDeltaTime * _speed * moveInput);
+		if (_gravityEnabled) _body.AddForce(Time.fixedDeltaTime * _baseGravity * Vector2.down);
 		_isBeingDragged = false;
 		moveInput = Vector2.zero;
 	}
