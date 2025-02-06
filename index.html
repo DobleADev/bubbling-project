@@ -1,29 +1,69 @@
 <!-- Play on Poki -->
+<!-- NOTE:
+	this HTML will not be used on Poki.com, the HTML will be auto generated from the index.json.
+	If you wish to add custom HTML you can add this in the "extra_html" part of the JSON.
+-->
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-	<title>The Last Bubble 0.6.5 - Play on Poki</title>
+	<title>The Last Bubble 0.6.6 - Play on Poki</title>
 
 	<script>
+	var buildUrl = 'Build';
 	window.config = {
-		loader: 'unity',
-		debug: true,
+		loader: 'unity-2020',
+		debug: false,
 		maxRatio: 16 / 9,
 		minRatio: 9 / 16,
 
-		title: `The Last Bubble 0.6.5`,
+		title: 'The Last Bubble 0.6.6',
 
 		thumbnail: 'https://img.poki-cdn.com/cdn-cgi/image/quality=80,width=100,height=100,fit=cover,g=0.5x0.5,f=auto/a398cd4e645b76810031bd97f8697414.png',
 		numScreenshots: 4,
 
-		unityWebglBuildUrl: 'Build/81ed0ccea3f762d4952e9858e6600d01.json',
-		unityWebglLoaderUrl: 'Build/20986a4044eaa8551db6be07233cc1d9.js',
+		metadata:{
+			"poki_template_version": 1,
+			"extra_html": {
+				"head": [
+					"<!-- will be copied to the resulting head //-->"
+				],
+				"body": [
+					"<!-- will be copied to the resulting body //-->",
+					"<!-- will also be copied to the resulting body //-->"
+				]
+			},
+			"background_color": "#231F20",
+			"background_filename": "",
+			"code_filename": "d63609cdf5a79801a3cc99c7583e875d.wasm",
+			"company_name": "DobleADev",
+			"data_filename": "e8a76e2d67a8220fb5933aef0e5e3d88.data",
+			"decompression_fallback": "",
+			"development_player": "false",
+			"framework_filename": "d50a883252b768f2fdd5e364343579b3.framework.js",
+			"height": "600",
+			"loader_filename": "9edd899bc6b6e0bbc4f46ff33ca0bba6.loader.js",
+			"memory_filename": "",
+			"product_name": "The Last Bubble 0.6.6",
+			"product_version": "0.6.6",
+			"splash_screen_style": "Dark",
+			"symbols_filename": "",
+			"unity_version": "2022.3.22f1",
+			"use_data_caching": "false",
+			"use_threads": "false",
+			"use_wasm": "true",
+			"use_webgl_1_0": "false",
+			"use_webgl_2_0": "true",
+			"width": "960"
+		}
 	};
 	</script>
 </head>
 <body>
-	<script src="https://game-cdn.poki.com/loaders/v2/master-loader.js"></script>
+	<script src="https://game-cdn.poki.com/loaders/v3/master-loader.js"></script>
+	<div style="position:absolute;top:0px;left:0px;z-index:9999;margin:10px">
+		This HTML will not be used on Poki.com. A new HTML will be auto generated from the JSON.
+	</div>
 </body>
 </html>
