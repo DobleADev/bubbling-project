@@ -28,7 +28,7 @@
 	"use_data_caching": "{{{ USE_DATA_CACHING }}}",
 	"use_threads": "{{{ USE_THREADS }}}",
 	"use_wasm": "{{{ USE_WASM }}}",
-	"use_webgl_1_0": "{{{ USE_WEBGL_1_0 }}}",
-	"use_webgl_2_0": "{{{ USE_WEBGL_2_0 }}}",
+	"use_webgl_1_0": "false",
+	"use_webgl_2_0": "true",
 	"width": "{{{ WIDTH }}}"
   }
