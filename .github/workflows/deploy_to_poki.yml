@@ -11,9 +11,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install Poki CLI
         run: npm install -g @poki/cli
-      - name: Login to Poki
-        run: poki login --token ${{ secrets.POKI_API_KEY }}
+      - name: Prepare deploy configuration
+        run: poki init --game 99c3fbd0-aa04-4ec4-8d9e-1678a6da9e78 --build-dir .
       - name: Deploy to Poki
-        run: poki upload --name "Versión $(date +%Y%m%d)" --build-dir . --notes "Despliegue desde GitHub Actions"
+        run: poki upload --name "Versión $(date +%Y%m%d)" --notes "Despliegue desde GitHub Actions"
       # - name: Deploy to Poki
       #   run: poki deploy --game_id 99c3fbd0-aa04-4ec4-8d9e-1678a6da9e78 --build_path .
