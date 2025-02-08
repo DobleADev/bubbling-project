@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Install Poki CLI
+        run: npm install -g @poki/cli
       - name: Login to Poki
         run: poki login --token ${{ secrets.POKI_API_KEY }}
       - name: Deploy to Poki
