@@ -14,4 +14,6 @@ jobs:
       - name: Login to Poki
         run: poki login --token ${{ secrets.POKI_API_KEY }}
       - name: Deploy to Poki
-        run: poki deploy --game_id 99c3fbd0-aa04-4ec4-8d9e-1678a6da9e78 --build_path .
+        run: poki upload --name "Versión $(date +%Y%m%d)" --build-dir . --notes "Despliegue desde GitHub Actions"
+      # - name: Deploy to Poki
+      #   run: poki deploy --game_id 99c3fbd0-aa04-4ec4-8d9e-1678a6da9e78 --build_path .
