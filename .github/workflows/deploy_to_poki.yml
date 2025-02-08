@@ -9,11 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install Poki CLI
-        run: npm install -g @poki/cli
-      - name: Prepare deploy configuration
-        run: poki init --game 99c3fbd0-aa04-4ec4-8d9e-1678a6da9e78 --build-dir .
+      # - name: Prepare deploy configuration
+      #   run: npx @poki/cli init --game 99c3fbd0-aa04-4ec4-8d9e-1678a6da9e78 --build-dir .
       - name: Deploy to Poki
-        run: poki upload --name "Versión $(date +%Y%m%d)" --notes "Despliegue desde GitHub Actions"
+        run: npx @poki/cli upload --name "Versión $(date +%Y%m%d)" --notes "Despliegue desde GitHub Actions"
       # - name: Deploy to Poki
       #   run: poki deploy --game_id 99c3fbd0-aa04-4ec4-8d9e-1678a6da9e78 --build_path .
